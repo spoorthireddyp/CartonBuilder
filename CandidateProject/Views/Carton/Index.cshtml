@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CandidateProject.ViewModels.CartonDetailsViewModel>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CartonNumber)
+        </th>
+
+        <th>
+            Total Equipments 
+
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CartonNumber)
+            </td>
+
+            <td>
+                @item.Equipment.Count()
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CartonId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CartonId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CartonId }) |
+                @Html.ActionLink("AddEquipment", "AddEquipment", new { id = item.CartonId }) |
+                @Html.ActionLink("ViewCartonEquipment", "ViewCartonEquipment", new { id = item.CartonId }) |
+                @Html.ActionLink("RemoveAllEquipment", "RemoveAllEquipment", new { id = item.CartonId })
+
+            </td>
+        </tr>
+
+    }
+
+
+</table>
+
+
+
